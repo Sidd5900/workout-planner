@@ -1,13 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import { WorkoutsContextProvider } from "./context/WorkoutsContext";
+import { AuthContextProvider } from "./context/AuthContext";
 // import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// pass the App component (will act as children) to the WorkoutsContextProvider as props
 root.render(
   <React.StrictMode>
-    <App />
+    <AuthContextProvider>
+      <WorkoutsContextProvider>
+        <App />
+      </WorkoutsContextProvider>
+    </AuthContextProvider>
   </React.StrictMode>
 );
 

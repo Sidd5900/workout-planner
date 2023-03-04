@@ -8,6 +8,11 @@ const {
   deleteWorkout,
   updateWorkout,
 } = require("../Controllers/WorkoutControllers");
+const requireAuth = require("../middleware/requireAuth");
+
+// require auth for all workout routes
+// if the user is not authenticated, we return an error message and hence the other routes are protected
+router.use(requireAuth);
 
 // GET all workouts
 router.get("/", getWorkouts);
